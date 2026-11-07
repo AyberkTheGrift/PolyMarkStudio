@@ -6,7 +6,10 @@ images never leave the computer.
 
 > This repository is a project showcase. The software is not distributed publicly.
 
-![Labeling view](docs/labeling.jpg)
+**Current version: 1.1** — new "floating canvas" interface and one-click export to Beyaz Studio.
+See [release notes](#release-notes).
+
+![Labeling view, dark theme](docs/labeling.jpg)
 
 *Demo dataset of buoy photos.*
 
@@ -20,8 +23,10 @@ images never leave the computer.
   by the same matrix, so labels never drift.
 - **9 export formats:** YOLOv8-11 segmentation and detection, COCO segmentation and detection, Pascal VOC,
   Apple CreateML, TensorFlow CSV, semantic mask PNG, and a full native backup.
-- **Train with Beyaz.** Train the author's own from-scratch detector on the labeled images, then let it pre-label
-  new images.
+- **Send to Beyaz Studio.** The first export option writes the labeled set straight into Beyaz Studio, the
+  author's own from-scratch detector, where it shows up ready to train. Boxes and polygons are both kept.
+- **Floating canvas interface.** The image fills the whole window; classes, SAM controls, labels and the film strip
+  float on top as cards and the image is fitted between them. Light and dark themes.
 
 ![Text-prompt auto-labeling](docs/auto-labeling.jpg)
 
@@ -41,10 +46,29 @@ images never leave the computer.
 | SAM 3 | 2.7 GB | ~0.4 s per text prompt once warm |
 | Both loaded | 3.2 GB total | — |
 
-- **Desktop app:** a C# launcher serves the UI, starts the bundled engine without a console window and keeps
-  training running in the tray when the window is closed.
+- **Beyaz export:** files go through the local engine into Beyaz Studio's data folder. The class list is written
+  last, so a half-finished export never appears in Beyaz Studio, and a failed export is cleaned up. Without the
+  engine, the same layout is downloaded as a ZIP.
+- **Desktop app:** a C# launcher serves the UI and starts the bundled engine without a console window.
 
 ![Export formats](docs/export.jpg)
+
+![Labeling view, light theme](docs/labeling-light.jpg)
+
+## Release notes
+
+### 1.1 (November 2026)
+- New "floating canvas" interface: the canvas fills the window and the toolbars, class list, SAM panel and film
+  strip float as cards around the image. New color tokens and the Manrope typeface; on narrow windows the cards
+  return to a normal layout.
+- The image is refitted when the window is resized, unless you have zoomed in yourself.
+- **Export > Beyaz Studio** (new default format) replaces the old "Train with Beyaz" tab: one click sends the
+  dataset to Beyaz Studio, which picks it up live.
+- New logo, favicon and app icons.
+
+### 1.0 (October 2026)
+- First desktop release: SAM 2.1 click labeling, SAM 3 text-prompt auto-labeling, augmentation, 9 export formats
+  and the bundled local AI engine.
 
 ## Author
 
